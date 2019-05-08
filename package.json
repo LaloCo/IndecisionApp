@@ -1,0 +1,12 @@
+{
+  "name": "indecision_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LaloCo/IndecisionApp.git",
+  "author": "Eduardo Rosas <lalorosas@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
