@@ -8,40 +8,48 @@ var app = {
 
 var count = 0;
 var addOne = function addOne() {
-    count = count + 1;
+    count++;
+    render();
 };
 var subtractOne = function subtractOne() {
-    count = count - 1;
+    count--;
+    render();
 };
 var reset = function reset() {
     count = 0;
+    render();
 };
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: subtractOne },
-        '-1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: reset },
-        'reset'
-    )
-);
-
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+
+var render = function render() {
+    var template = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'Count: ',
+            count
+        ),
+        React.createElement(
+            'button',
+            { onClick: addOne },
+            '+1'
+        ),
+        React.createElement(
+            'button',
+            { onClick: subtractOne },
+            '-1'
+        ),
+        React.createElement(
+            'button',
+            { onClick: reset },
+            'reset'
+        )
+    );
+
+    ReactDOM.render(template, appRoot);
+};
+
+render();
