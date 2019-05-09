@@ -3,20 +3,24 @@
 var app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
-    options: ['one', 'two']
+    options: []
 };
 
-var count = 0;
-var addOne = function addOne() {
-    count++;
+var addOption = function addOption(e) {
+    e.preventDefault(); // stop full page refresh
+
+    var option = e.target.elements.optionText.value;
+
+    if (option) {
+        app.options.push(option);
+        e.target.elements.optionText.value = '';
+    }
+
     render();
 };
-var subtractOne = function subtractOne() {
-    count--;
-    render();
-};
-var reset = function reset() {
-    count = 0;
+
+var clearOptions = function clearOptions() {
+    app.options = [];
     render();
 };
 
@@ -29,23 +33,37 @@ var render = function render() {
         React.createElement(
             'h1',
             null,
-            'Count: ',
-            count
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
         ),
         React.createElement(
             'button',
-            { onClick: addOne },
-            '+1'
+            { onClick: clearOptions },
+            'Remove all'
         ),
         React.createElement(
-            'button',
-            { onClick: subtractOne },
-            '-1'
+            'p',
+            null,
+            app.options.length > 0 ? 'Here are your options:' : 'No options'
         ),
         React.createElement(
-            'button',
-            { onClick: reset },
-            'reset'
+            'p',
+            null,
+            app.options.length
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: addOption },
+            React.createElement('input', { type: 'text', name: 'optionText' }),
+            React.createElement(
+                'button',
+                null,
+                'Add option'
+            )
         )
     );
 
