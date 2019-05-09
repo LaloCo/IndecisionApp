@@ -36,7 +36,7 @@ const render = () => {
         <div>
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
-            <button onClick={makeDecision}>What should I do?</button>
+            <button disabled={app.options.length <= 0} onClick={makeDecision}>What should I do?</button>
             <p>{app.options.length > 0 ? 'Here are your options:' : 'No options'}</p>
             <button onClick={clearOptions}>Remove all</button>
             <ol>
