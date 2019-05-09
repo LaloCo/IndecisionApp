@@ -20,7 +20,14 @@ const addOption = (e) => {
 const clearOptions = () => {
     app.options = [];
     render();
-}
+};
+
+const makeDecision = () => {
+    const randomNumber = Math.floor(Math.random() * app.options.length);
+
+    const selectedValue = app.options[randomNumber];
+    alert(selectedValue);
+};
 
 const appRoot = document.getElementById('app');
 
@@ -29,8 +36,9 @@ const render = () => {
         <div>
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
-            <button onClick={clearOptions}>Remove all</button>
+            <button onClick={makeDecision}>What should I do?</button>
             <p>{app.options.length > 0 ? 'Here are your options:' : 'No options'}</p>
+            <button onClick={clearOptions}>Remove all</button>
             <ol>
             {
                 app.options.map((option) => <li key={option}>{option}</li>)
