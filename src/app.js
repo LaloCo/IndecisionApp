@@ -17,6 +17,11 @@ const addOption = (e) => {
     render();
 };
 
+const clearOptions = () => {
+    app.options = [];
+    render();
+}
+
 const appRoot = document.getElementById('app');
 
 const render = () => {
@@ -24,6 +29,7 @@ const render = () => {
         <div>
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
+            <button onClick={clearOptions}>Remove all</button>
             <p>{app.options.length > 0 ? 'Here are your options:' : 'No options'}</p>
             <p>{app.options.length}</p>
             <form onSubmit={addOption}>

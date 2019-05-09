@@ -19,6 +19,11 @@ var addOption = function addOption(e) {
     render();
 };
 
+var clearOptions = function clearOptions() {
+    app.options = [];
+    render();
+};
+
 var appRoot = document.getElementById('app');
 
 var render = function render() {
@@ -34,6 +39,11 @@ var render = function render() {
             'p',
             null,
             app.subtitle
+        ),
+        React.createElement(
+            'button',
+            { onClick: clearOptions },
+            'Remove all'
         ),
         React.createElement(
             'p',
