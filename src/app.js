@@ -31,11 +31,7 @@ const render = () => {
             {app.subtitle && <p>{app.subtitle}</p>}
             <button onClick={clearOptions}>Remove all</button>
             <p>{app.options.length > 0 ? 'Here are your options:' : 'No options'}</p>
-            <ol>
-            {
-                app.options.map((option) => <li>{option}</li>)
-            }
-            </ol>
+            <p>{app.options.length}</p>
             <form onSubmit={addOption}>
                 <input type="text" name="optionText"/>
                 <button>Add option</button>
