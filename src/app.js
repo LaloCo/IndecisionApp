@@ -4,12 +4,23 @@ const app = {
     options: ['one', 'two'],
 };
 
-// JSX - JavaScript XML
-const template  = (
+let count = 0;
+const addOne = () => {
+    count = count + 1;
+}
+const subtractOne = () => {
+    count = count - 1;
+}
+const reset = () => {
+    count = 0;
+}
+
+const template = (
     <div>
-        <h1>{app.title}</h1>
-        {app.subtitle && <p>app.subtitle</p>}
-        <p>{app.options.length > 0 ? 'Here are your options:' : 'No options:'}</p>
+        <h1>Count: {count}</h1>
+        <button onClick={addOne}>+1</button>
+        <button onClick={subtractOne}>-1</button>
+        <button onClick={reset}>reset</button>
     </div>
 );
 
