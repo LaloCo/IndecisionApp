@@ -1,12 +1,31 @@
 'use strict';
 
-var nameVar = 'Eduardo';
-var nameVar = 'Yesenia'; //with var we can redefine, so we could mistakenly do so and not have access to the first one anymore.
-console.log('nameVar', nameVar);
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
+    options: ['one', 'two']
+};
 
-var nameLet = 'Eduardo';
-nameLet = 'Yesenia'; // with let we cannot redefine, so there is no problem.
-console.log('nameLet', nameLet);
+// JSX - JavaScript XML
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        'app.subtitle'
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options:' : 'No options:'
+    )
+);
 
-var nameConst = 'Eduardo'; // Like with let, we cannot redefine it, but neither can we reassign
-console.log('nameConst', nameConst);
+var appRoot = document.getElementById('app');
+ReactDOM.render(template, appRoot);

@@ -1,2 +1,4 @@
 # To get this folder back, run "yarn install"
 node_modules/
+
+.vscode/
