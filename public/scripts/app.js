@@ -53,7 +53,13 @@ var render = function render() {
         React.createElement(
             'p',
             null,
-            app.options.length
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',
