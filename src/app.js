@@ -33,7 +33,7 @@ const render = () => {
             <p>{app.options.length > 0 ? 'Here are your options:' : 'No options'}</p>
             <ol>
             {
-                app.options.map((option) => <li>{option}</li>)
+                app.options.map((option) => <li key={option}>{option}</li>)
             }
             </ol>
             <form onSubmit={addOption}>

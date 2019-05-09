@@ -56,7 +56,7 @@ var render = function render() {
             app.options.map(function (option) {
                 return React.createElement(
                     'li',
-                    null,
+                    { key: option },
                     option
                 );
             })
