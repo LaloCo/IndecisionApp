@@ -23,7 +23,7 @@ var Person = function () {
     }, {
         key: 'getDescription',
         value: function getDescription() {
-            return this.name + ' is ' + this.age + ' year(s) old';
+            return this.name + ' is ' + this.age + ' year(s) old.';
         }
     }]);
 

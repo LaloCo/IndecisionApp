@@ -1,4 +1,3 @@
-
 class Person {
     constructor(name = 'Anonymous', age = 0) {
         this.name = name;
@@ -10,7 +9,7 @@ class Person {
     }
 
     getDescription() {
-        return `${this.name} is ${this.age} year(s) old`;
+        return `${this.name} is ${this.age} year(s) old.`;
     }
 }
 
