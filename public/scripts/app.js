@@ -28,9 +28,9 @@ var IndecisionApp = function (_React$Component) {
                 'div',
                 null,
                 React.createElement(Header, { title: title, subtitle: subtitle }),
-                React.createElement(Action, null),
+                React.createElement(Action, { options: options }),
                 React.createElement(Options, { options: options }),
-                React.createElement(AddOption, null)
+                React.createElement(AddOption, { options: options })
             );
         }
     }]);
@@ -73,16 +73,22 @@ var Header = function (_React$Component2) {
 var Action = function (_React$Component3) {
     _inherits(Action, _React$Component3);
 
-    function Action() {
+    function Action(props) {
         _classCallCheck(this, Action);
 
-        return _possibleConstructorReturn(this, (Action.__proto__ || Object.getPrototypeOf(Action)).apply(this, arguments));
+        var _this3 = _possibleConstructorReturn(this, (Action.__proto__ || Object.getPrototypeOf(Action)).call(this, props));
+
+        _this3.handlePick = _this3.handlePick.bind(_this3);
+        return _this3;
     }
 
     _createClass(Action, [{
         key: 'handlePick',
         value: function handlePick() {
-            //TODO: Pick option from list
+            var randomNumber = Math.floor(Math.random() * this.props.options.length);
+
+            var selectedValue = this.props.options[randomNumber];
+            alert(selectedValue);
         }
     }, {
         key: 'render',
@@ -105,18 +111,31 @@ var Action = function (_React$Component3) {
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
 
-    function Options() {
+    function Options(props) {
         _classCallCheck(this, Options);
 
-        return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+        var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+        _this4.handleRemoveAll = _this4.handleRemoveAll.bind(_this4);
+        return _this4;
     }
 
     _createClass(Options, [{
+        key: 'handleRemoveAll',
+        value: function handleRemoveAll() {
+            this.props.options = [];
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
+                React.createElement(
+                    'button',
+                    { onClick: this.handleRemoveAll },
+                    'Remove all'
+                ),
                 this.props.options.map(function (option) {
                     return React.createElement(Option, { key: option, option: option });
                 })
@@ -137,21 +156,11 @@ var Option = function (_React$Component5) {
     }
 
     _createClass(Option, [{
-        key: 'handleRemoveAll',
-        value: function handleRemoveAll() {
-            //TODO: Remove all from list
-        }
-    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(
-                    'button',
-                    { onClick: this.handleRemoveAll },
-                    'Remove all'
-                ),
                 React.createElement(
                     'p',
                     null,
@@ -167,10 +176,13 @@ var Option = function (_React$Component5) {
 var AddOption = function (_React$Component6) {
     _inherits(AddOption, _React$Component6);
 
-    function AddOption() {
+    function AddOption(props) {
         _classCallCheck(this, AddOption);
 
-        return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+        var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+        _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+        return _this6;
     }
 
     _createClass(AddOption, [{
@@ -181,7 +193,8 @@ var AddOption = function (_React$Component6) {
             var option = e.target.elements.optionText.value.trim();
 
             if (option) {
-                //TODO: Add option
+                this.props.options.push(option);
+                e.target.elements.optionText.value = '';
             }
         }
     }, {

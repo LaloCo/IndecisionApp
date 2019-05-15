@@ -2,14 +2,14 @@ class IndecisionApp extends React.Component {
     render() {
         const title = 'Indecision App';
         const subtitle = 'Put your life in the hands of a computer, what could go wrong?';
-        let options = ['one', 'two', 'three'];
+        const options = ['one', 'two', 'three'];
 
         return (
             <div>
                 <Header title={title} subtitle={subtitle}/>
-                <Action/>
+                <Action options={options}/>
                 <Options options={options}/>
-                <AddOption/>
+                <AddOption options={options}/>
             </div>
         );
     }
@@ -27,8 +27,17 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handlePick = this.handlePick.bind(this);
+    }
+
     handlePick() {
-        //TODO: Pick option from list
+        const randomNumber = Math.floor(Math.random() * this.props.options.length);
+
+        const selectedValue = this.props.options[randomNumber];
+        alert(selectedValue);
     }
 
     render() {
@@ -41,9 +50,20 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+
+    handleRemoveAll() {
+        this.props.options = [];
+    }
+
     render() {
         return (
             <div>
+                <button onClick={this.handleRemoveAll}>Remove all</button>
                 {
                     this.props.options.map((option) => <Option key={option} option={option}/>)
                 }
@@ -53,14 +73,9 @@ class Options extends React.Component {
 }
 
 class Option extends React.Component {
-    handleRemoveAll() {
-        //TODO: Remove all from list
-    }
-
     render() {
         return (
             <div>
-                <button onClick={this.handleRemoveAll}>Remove all</button>
                 <p>{this.props.option}</p>
             </div>
         );
@@ -68,13 +83,20 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleAddOption = this.handleAddOption.bind(this);
+    }
+
     handleAddOption(e) {
         e.preventDefault(); // stop full page refresh
 
         const option = e.target.elements.optionText.value.trim();
 
         if (option) {
-            //TODO: Add option
+            this.props.options.push(option);
+            e.target.elements.optionText.value = '';
         }
     }
 
