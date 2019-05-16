@@ -4,6 +4,7 @@ class IndecisionApp extends React.Component {
         this.handleRemoveAll = this.handleRemoveAll.bind(this);
         this.handlePick = this.handlePick.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
+        this.handleRemoveOption = this.handleRemoveOption.bind(this);
         this.state = {
             options: props.options
         };
@@ -11,6 +12,13 @@ class IndecisionApp extends React.Component {
 
     handleRemoveAll() {
         this.setState(() => ({ options: [] }));
+    }
+
+    handleRemoveOption (option) {
+        this.setState((prevState) => 
+        ({ 
+            options: prevState.options.filter((o) => o !== option)
+        }));
     }
 
     handlePick() {
@@ -39,7 +47,8 @@ class IndecisionApp extends React.Component {
                 <Action hasOptions={this.state.options.length > 0}
                         handlePick={this.handlePick}/>
                 <Options options={this.state.options}
-                         handleRemoveAll={this.handleRemoveAll}/>
+                         handleRemoveAll={this.handleRemoveAll}
+                         handleRemoveOption={this.handleRemoveOption}/>
                 <AddOption handleAddOption={this.handleAddOption}/>
             </div>
         );
@@ -79,7 +88,11 @@ const Options = (props) => {
         <div>
             <button onClick={props.handleRemoveAll}>Remove all</button>
             {
-                props.options.map((option) => <Option key={option} option={option}/>)
+                props.options.map((option) => (
+                    <Option key={option}
+                            option={option}
+                            handleRemoveOption={props.handleRemoveOption}/>
+                ))
             }
         </div>
     );
@@ -88,7 +101,12 @@ const Options = (props) => {
 const Option = (props) => {
     return (
         <div>
-            <p>{props.option}</p>
+            {props.option}
+            <button onClick={(e) => {
+                props.handleRemoveOption(props.option);
+            }}>
+                remove
+            </button>
         </div>
     );
 }
