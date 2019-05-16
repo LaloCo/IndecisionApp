@@ -86,14 +86,12 @@ const Options = (props) => {
     );
 }
 
-class Option extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>{this.props.option}</p>
-            </div>
-        );
-    }
+const Option = (props) => {
+    return (
+        <div>
+            <p>{props.option}</p>
+        </div>
+    );
 }
 
 class AddOption extends React.Component {
