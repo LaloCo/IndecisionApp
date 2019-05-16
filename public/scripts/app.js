@@ -29,9 +29,7 @@ var IndecisionApp = function (_React$Component) {
         key: 'handleRemoveAll',
         value: function handleRemoveAll() {
             this.setState(function () {
-                return {
-                    options: []
-                };
+                return { options: [] };
             });
         }
     }, {
@@ -52,9 +50,7 @@ var IndecisionApp = function (_React$Component) {
             }
 
             this.setState(function (prevState) {
-                return {
-                    options: prevState.options.concat(option)
-                };
+                return { options: prevState.options.concat(option) };
             });
         }
     }, {
