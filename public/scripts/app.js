@@ -39,7 +39,7 @@ var IndecisionApp = function (_React$Component) {
                     });
                 }
             } catch (e) {
-                // Do nothing
+                //* Do nothing
             }
         }
     }, {
