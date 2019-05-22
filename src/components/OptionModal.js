@@ -2,7 +2,8 @@ import React from 'react';
 import Modal from 'react-modal';
 
 const OptionModal = (props) => (
-    <Modal isOpen={!!props.selectedOption}
+    <Modal ariaHideApp={false}
+           isOpen={!!props.selectedOption}
            contentLabel="Selected Option"
            closeTimeoutMS={200}
            onRequestClose={props.handleCloseModal}
