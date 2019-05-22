@@ -1,0 +1,24 @@
+.widget {
+    background: lighten($color: $dark-color, $amount: 30%);
+    margin-bottom: $xl-size;
+}
+
+.widget__message {
+    border-bottom: 1px solid darken($color: $light-color, $amount: 20%);
+    color: darken($color: $light-color, $amount: 10%);
+    margin: 0;
+    padding: $l-size;
+    text-align: center;
+}
+
+.widget-header {
+    background: lighten($color: $dark-color, $amount: 10%);
+    color: darken($color: $light-color, $amount: 10%);
+    display: flex;
+    justify-content: space-between;
+    padding: $m-size;
+}
+
+.widget-header__title {
+    margin: 0;
+}

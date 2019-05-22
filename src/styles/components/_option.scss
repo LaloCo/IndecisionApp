@@ -1,0 +1,13 @@
+.option {
+    border-bottom: 1px solid darken($color: $light-color, $amount: 20%);
+    display: flex;
+    justify-content: space-between;
+    padding: $l-size $m-size;
+}
+
+.option__text {
+    color: $light-color;
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0;
+}
