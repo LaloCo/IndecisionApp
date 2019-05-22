@@ -1,7 +1,5 @@
+@import './base/settings';
 @import './base/base';
 @import './components/header';
-
-$brand-color: #FE4A49;
-$dark-color: #0C1821;
-$accent-color: #4392F1;
-$light-color: #F4F4F8;
+@import './components/container';
+@import './components/button';
